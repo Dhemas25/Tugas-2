@@ -11,3 +11,26 @@ table, th, td {
 <p>{{ name }}</p> <!-- Ubahlah sesuai dengan nama kamu -->
 <h5>Class: </h5>
 <p>{{ class }}</p> <!-- Ubahlah sesuai dengan kelas kamu -->
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Attack</th>
+        <th>Magic</th>
+        <th>Description</th>
+        <th>Ability</th>
+        <th>Proficiency Bonus</th>
+        <th>Location</th>
+    </tr>
+    {% for weapon in weapon_data %}
+    <tr>
+        <td>{{ weapon.name }}</td>
+        <td>{{ weapon.attack }}</td>
+        <td>{{ weapon.magic }}</td>
+        <td>{{ weapon.description }}</td>
+        <td>{{ weapon.ability }}</td>
+        <td>{{ weapon.proficiency_bonus }}</td>
+        <td>{{ weapon.location }}</td>
+    </tr>
+    {% endfor %}
+</table>
