@@ -26,8 +26,6 @@ e.  Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah templ
     request     :   Ini adalah objek permintaan HTTP yang dikirim oleh pengguna.
     main.html   :   Ini adalah nama berkas template yang akan digunakan untuk me-render tampilan.
     context     :   Ini adalah dictionary yang berisi data yang akan diteruskan ke tampilan untuk digunakan dalam penampilan dinamis.
-
-    Kemudian, saya memodifikasi template di berkas main.html di direktori templates dengan mengubah kode yang sebelumnya dibuat secara statis menjadi kode django.
     
 f.  Membuat sebuah routing pada urls.py aplikasi main untuk memetakan fungsi yang telah dibuat pada views.py.
     Pertama, membuat berkas berkas urls.py di dalam direktori main. dan mengisinya dengan kode:
