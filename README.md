@@ -18,7 +18,7 @@ d.  Membuat model pada aplikasi main.
     Membuat direktori baru bernama templates di dalam direktori aplikasi main. Kemudian, di dalam direktori templates, membuat berkas baru bernama main.html dan isi berkas dengan model yang saya mau.
 
 e.  Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML.
-    Setelah membuka berkas views.py, saya mengimport render dari django.shortcuts dengan cara 'from django.shortcuts import render'. Lalu menambahkan fungsi show_main di bawah import. Lalu, saya membuat dictionary weapon_data berisi data - data yang saya inginkan dan dictionary context yang berisi 3 keys yaitu name, class, dan weapon_data yang berisi value nama, kelas, dan variabel dictionary weapon_data yang sudah saya buat sebelumnya. Kemudian fungsi show_main mereturn fungsi render, seperti ini:\
+    Setelah membuka berkas views.py, saya mengimport render dari django.shortcuts dengan cara 'from django.shortcuts import render'. Lalu menambahkan fungsi     show_main di bawah import. Lalu, saya membuat dictionary weapon_data berisi data - data yang saya inginkan dan dictionary context yang berisi 3 keys yaitu name, class, dan weapon_data yang berisi value nama, kelas, dan variabel dictionary weapon_data yang sudah saya buat sebelumnya. Kemudian fungsi show_main mereturn fungsi render, seperti ini:
     ...
     return render(request, "main.html", context)
     ...
@@ -27,8 +27,8 @@ e.  Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah templ
     main.html   :   Ini adalah nama berkas template yang akan digunakan untuk me-render tampilan.
     context     :   Ini adalah dictionary yang berisi data yang akan diteruskan ke tampilan untuk digunakan dalam penampilan dinamis.
 
-    Kemudian, saya memodifikasi template di berkas main.html di direktori templates dengan mengubah kode yang sebelumnya dibuat secara statis menjadi kode django yang sesuai.
-
+    Kemudian, saya memodifikasi template di berkas main.html di direktori templates dengan mengubah kode yang sebelumnya dibuat secara statis menjadi kode django.
+    
 f.  Membuat sebuah routing pada urls.py aplikasi main untuk memetakan fungsi yang telah dibuat pada views.py.
     Pertama, membuat berkas berkas urls.py di dalam direktori main. dan mengisinya dengan kode:
 
