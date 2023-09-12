@@ -28,7 +28,7 @@ table, th, td {
         <td>{{ weapon.attack }}</td>
         <td>{{ weapon.magic }}</td>
         <td><i>{{ weapon.description }}</i></td>
-        <td>{{ weapon.ability }}</td>
+        <td>{{ weapon.ability | safe }}</td>
         <td>{{ weapon.proficiency_bonus }}</td>
         <td>{{ weapon.location }}</td>
     </tr>
