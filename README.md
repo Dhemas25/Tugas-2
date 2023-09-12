@@ -18,14 +18,7 @@ d.  Membuat model pada aplikasi main.
     Membuat direktori baru bernama templates di dalam direktori aplikasi main. Kemudian, di dalam direktori templates, membuat berkas baru bernama main.html dan isi berkas dengan model yang saya mau.
 
 e.  Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML.
-    Setelah membuka berkas views.py, saya mengimport render dari django.shortcuts dengan cara 'from django.shortcuts import render'. Lalu menambahkan fungsi     show_main di bawah import. Lalu, saya membuat dictionary weapon_data berisi data - data yang saya inginkan dan dictionary context yang berisi 3 keys yaitu name, class, dan weapon_data yang berisi value nama, kelas, dan variabel dictionary weapon_data yang sudah saya buat sebelumnya. Kemudian fungsi show_main mereturn fungsi render, seperti ini:
-    ...
-    return render(request, "main.html", context)
-    ...
-    Ini berguna untuk me-render tampilan main.html dengan menggunakan fungsi render. Fungsi render mengambil tiga argumen:
-    request     :   Ini adalah objek permintaan HTTP yang dikirim oleh pengguna.
-    main.html   :   Ini adalah nama berkas template yang akan digunakan untuk me-render tampilan.
-    context     :   Ini adalah dictionary yang berisi data yang akan diteruskan ke tampilan untuk digunakan dalam penampilan dinamis.
+    Setelah membuka berkas views.py, saya mengimport render dari django.shortcuts dengan cara 'from django.shortcuts import render'. Lalu menambahkan fungsi     show_main di bawah import. Lalu, saya membuat dictionary weapon_data berisi data - data yang saya inginkan dan dictionary context yang berisi 3 keys yaitu name, class, dan weapon_data yang berisi value nama, kelas, dan variabel dictionary weapon_data yang sudah saya buat sebelumnya. Kemudian fungsi show_main mereturn fungsi render yang berisi 3 argumen 'return render(request, "main.html", context)'
     
 f.  Membuat sebuah routing pada urls.py aplikasi main untuk memetakan fungsi yang telah dibuat pada views.py.
     Pertama, membuat berkas berkas urls.py di dalam direktori main. dan mengisinya dengan kode:
