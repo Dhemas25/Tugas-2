@@ -5,12 +5,16 @@ table, th, td {
 }
 </style>
 
-<h1>Cloud's Sword List FF 7 Remake</h1>
+{% extends 'base.html' %}
 
-<h5>Name: </h5>
-<p>{{ name }}</p> <!-- Ubahlah sesuai dengan nama kamu -->
-<h5>Class: </h5>
-<p>{{ class }}</p> <!-- Ubahlah sesuai dengan kelas kamu -->
+{% block content %}
+    <h1>Cloud's Sword List FF 7 Remake</h1>
+
+    <h5>Name:</h5>
+    <p>{{name}}</p>
+
+    <h5>Class:</h5>
+    <p>{{class}}</p>
 
 <table>
     <tr>
@@ -25,12 +29,44 @@ table, th, td {
     {% for weapon in weapon_data %}
     <tr>
         <td>{{ weapon.name }}</td>
-        <td>{{ weapon.attack }}</td>
-        <td>{{ weapon.magic }}</td>
+        <td><center>{{ weapon.attack }}</center></td>
+        <td><center>{{ weapon.magic }}</center></td>
         <td><i>{{ weapon.description }}</i></td>
         <td>{{ weapon.ability | safe }}</td>
-        <td>{{ weapon.proficiency_bonus }}</td>
+        <td><center>{{ weapon.proficiency_bonus }}</center></td>
         <td>{{ weapon.location }}</td>
     </tr>
     {% endfor %}
 </table>
+
+
+<h1>Cloud's inventory</h1>
+
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>amount</th>
+        <th>Description</th>
+    </tr>
+
+    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+    {% for item in products %}
+        <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.description}}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<br />
+
+<a href="{% url 'main:create_product' %}">
+    <button>
+        Add New Product
+    </button>
+</a>
+
+{% endblock content %}

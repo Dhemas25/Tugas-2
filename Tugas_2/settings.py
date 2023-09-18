@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7f7$)b0@)*&e)b4ncl0ti#86^5v7#$dc4e)b3f^0_upi5xm(q@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Tugas_2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'], # Tambahkan kode ini,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
