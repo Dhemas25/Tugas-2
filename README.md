@@ -201,36 +201,7 @@ Perbedaan Utama --> MVC adalah pola arsitektur yang digunakan terutama dalam pen
             Pertama, saya mengubah sedikit fungsi show_main pada file views.py dengan menambahkan potongan kode 'items = Item.objects.all()' yang berfungsi untuk mengambil seluruh object Product yang tersimpan pada database. Lalu menyimpan variabel items pada dictionary context dengan key "products".
             Lalu, saya mengimport fungsi create_product pada file urls.py yang ada di folder main dan menambahkan path url ke dalam urlpatterns pada urls.py di main untuk mengakses fungsi yang sudah di-import sebelumnya.
             Membuat berkas HTML baru dengan nama create_product.html pada direktori main/templates untuk membuat template form input data.
-            Kemudian, menambahkan kode berikut dalam {% block content %} di main.html untuk menampilkan data produk dalam bentuk table serta tombol "Add New Product" yang akan redirect ke halaman form.
-            '''html
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>amount</th>
-                    <th>Description</th>
-                </tr>
-
-                {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-
-                {% for item in products %}
-                    <tr>
-                        <td><center>{{item.name}}</center></td>
-                        <td><center>{{item.amount}}</center></td>
-                        <td><i>{{item.description}}</i></td>
-                    </tr>
-                {% endfor %}
-            </table>
-
-            <br />
-
-            <a href="{% url 'main:create_product' %}">
-                <button>
-                    Add New Product
-                </button>
-            </a>
-
-            {% endblock content %}
-            '''
+            Kemudian, memnambahkan kode di main.html untuk menampilkan data produk dalam bentuk table serta tombol "Add New Product" yang akan redirect ke halaman form.
         
         -   fungsi untuk XML dan JSON
             Pertama, saya mengimport django yaitu HttpResponse dan Serializers ke dalam file views.py. Kemudian, membuat fungsi yang menerima parameter request dengan nama show_xml dan show_json dan membuat sebuah variabel di dalam fungsi tersebut yang menyimpan hasil query dari seluruh data yang ada pada class Item yang ada pada model. Lalu, menambahkan return function berupa HttpResponse yang berisi parameter data hasil query yang sudah diserialisasi menjadi XML atau JSON dan parameter 'content_type="application/xml"' atau content_type="application/JSON"'. Lalu mengimport fungsi yang sudah dibuat ke dalam urls.py dan menambahkan path url ke dalam urlpatterns untuk mengakses fungsi yang sudah diimport tadi.
