@@ -202,9 +202,8 @@ Perbedaan Utama --> MVC adalah pola arsitektur yang digunakan terutama dalam pen
             Lalu, saya mengimport fungsi create_product pada file urls.py yang ada di folder main dan menambahkan path url ke dalam urlpatterns pada urls.py di main untuk mengakses fungsi yang sudah di-import sebelumnya.
             Membuat berkas HTML baru dengan nama create_product.html pada direktori main/templates untuk membuat template form input data.
             Kemudian, menambahkan kode berikut dalam {% block content %} di main.html untuk menampilkan data produk dalam bentuk table serta tombol "Add New Product" yang akan redirect ke halaman form.
-            <pre>
             '''html
-                    <table>
+            <table>
                 <tr>
                     <th>Name</th>
                     <th>amount</th>
@@ -232,7 +231,6 @@ Perbedaan Utama --> MVC adalah pola arsitektur yang digunakan terutama dalam pen
 
             {% endblock content %}
             '''
-            </pre>
         
         -   fungsi untuk XML dan JSON
             Pertama, saya mengimport django yaitu HttpResponse dan Serializers ke dalam file views.py. Kemudian, membuat fungsi yang menerima parameter request dengan nama show_xml dan show_json dan membuat sebuah variabel di dalam fungsi tersebut yang menyimpan hasil query dari seluruh data yang ada pada class Item yang ada pada model. Lalu, menambahkan return function berupa HttpResponse yang berisi parameter data hasil query yang sudah diserialisasi menjadi XML atau JSON dan parameter 'content_type="application/xml"' atau content_type="application/JSON"'. Lalu mengimport fungsi yang sudah dibuat ke dalam urls.py dan menambahkan path url ke dalam urlpatterns untuk mengakses fungsi yang sudah diimport tadi.
@@ -253,20 +251,16 @@ Perbedaan Utama --> MVC adalah pola arsitektur yang digunakan terutama dalam pen
             Setelah itu, import fungsi yang sudah dibuat ke dalam urls.py dan menambahkan path url ke dalam urlpatterns untuk mengakses fungsi yang sudah diimpor tadi.
 
 5.  **Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.**
-        -   screenshot html
-            [![Screenshot-39.png](https://i.postimg.cc/jdvC9Ffc/Screenshot-39.png)](https://postimg.cc/GH8cTzqT)
-        
-        -   screenshot XML
-            [![Screenshot-40.png](https://i.postimg.cc/3Nz752KK/Screenshot-40.png)](https://postimg.cc/2LdgnbbJ)
-        
-        -   screenshot JSON
-            [![Screenshot-41.png](https://i.postimg.cc/4N5k1Ccf/Screenshot-41.png)](https://postimg.cc/2VVKzKTM)
-        
-        -   screenshot XML_by_id
-            [![Screenshot-42.png](https://i.postimg.cc/7ZFVGhLf/Screenshot-42.png)](https://postimg.cc/4Y1tjJVg)
-        
-        -   screenshot JSON-by_id
-            [![Screenshot-43.png](https://i.postimg.cc/yNnDqp2s/Screenshot-43.png)](https://postimg.cc/LqY9LDHb)
+    -   screenshot html
+        [![Screenshot-39.png](https://i.postimg.cc/jdvC9Ffc/Screenshot-39.png)](https://postimg.cc/GH8cTzqT)
+    -   screenshot XML
+        [![Screenshot-40.png](https://i.postimg.cc/3Nz752KK/Screenshot-40.png)](https://postimg.cc/2LdgnbbJ)
+    -   screenshot JSON
+        [![Screenshot-41.png](https://i.postimg.cc/4N5k1Ccf/Screenshot-41.png)](https://postimg.cc/2VVKzKTM)
+    -   screenshot XML_by_id
+        [![Screenshot-42.png](https://i.postimg.cc/7ZFVGhLf/Screenshot-42.png)](https://postimg.cc/4Y1tjJVg)
+    -   screenshot JSON-by_id
+        [![Screenshot-43.png](https://i.postimg.cc/yNnDqp2s/Screenshot-43.png)](https://postimg.cc/LqY9LDHb)
 
 
  
