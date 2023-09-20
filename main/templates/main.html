@@ -1,10 +1,10 @@
 <!-- Table from https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_th -->
 <style>
- #tabel-list {
+ table, th, td {
         border-collapse: collapse;
     }
 
-#tabel-list th, #tabel-list td {
+table, th, td {
   border: 2px solid black;
 }
 </style>
@@ -12,40 +12,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Cloud's Sword List FF 7 Remake</h1>
+    <h1>Cloud's Inventory</h1>
 
     <h5>Name:</h5>
     <p>{{name}}</p>
 
     <h5>Class:</h5>
     <p>{{class}}</p>
-
-<table id = "tabel-list">
-    <tr>
-        <th>Name</th>
-        <th>Attack</th>
-        <th>Magic</th>
-        <th>Description</th>
-        <th>Ability</th>
-        <th>Proficiency Bonus</th>
-        <th>Location</th>
-    </tr>
-    {% for weapon in weapon_data %}
-    <tr>
-        <td><center>{{ weapon.name }}</center></td>
-        <td><center>{{ weapon.attack }}</center></td>
-        <td><center>{{ weapon.magic }}</center></td>
-        <td><i><center>{{ weapon.description }}</center></i></td>
-        <td>{{ weapon.ability | safe }}</td>
-        <td><center>{{ weapon.proficiency_bonus }}</center></td>
-        <td><center>{{ weapon.location }}</center></td>
-    </tr>
-    {% endfor %}
-</table>
-
-
-<h1>Cloud's inventory</h1>
-
 
 <table>
     <tr>
@@ -60,7 +33,7 @@
         <tr>
             <td><center>{{item.name}}</center></td>
             <td><center>{{item.amount}}</center></td>
-            <td><i>{{item.description}}</i></td>
+            <td>{{item.description}}</td>
         </tr>
     {% endfor %}
 </table>
