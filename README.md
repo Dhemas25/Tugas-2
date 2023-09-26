@@ -189,6 +189,7 @@ Perbedaan Utama --> MVC adalah pola arsitektur yang digunakan terutama dalam pen
             - Terutama digunakan untuk mengatur tampilan dan konten halaman web.
 
 3.  **Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?**
+
     JSON sering digunakan dalam pertukaran data antara aplikasi web modern karena ringan, mudah dibaca oleh manusia, mudah diurai oleh mesin, mendukung struktur data yang terstruktur, memiliki dukungan untuk tipe data dasar, dan terintegrasi dengan teknologi web serta berbagai platform.
 
 4.  **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
@@ -198,15 +199,18 @@ Perbedaan Utama --> MVC adalah pola arsitektur yang digunakan terutama dalam pen
 
     2.  **Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.** dan       **Membuat routing URL untuk masing-masing views yang telah ditambahkan.**
         -   fungsi untuk html
+
             Pertama, saya mengubah sedikit fungsi show_main pada file views.py dengan menambahkan potongan kode 'items = Item.objects.all()' yang berfungsi untuk mengambil seluruh object Product yang tersimpan pada database. Lalu menyimpan variabel items pada dictionary context dengan key "products".
             Lalu, saya mengimport fungsi create_product pada file urls.py yang ada di folder main dan menambahkan path url ke dalam urlpatterns pada urls.py di main untuk mengakses fungsi yang sudah di-import sebelumnya.
             Membuat berkas HTML baru dengan nama create_product.html pada direktori main/templates untuk membuat template form input data.
             Kemudian, memnambahkan kode di main.html untuk menampilkan data produk dalam bentuk table serta tombol "Add New Product" yang akan redirect ke halaman form.
         
         -   fungsi untuk XML dan JSON
+
             Pertama, saya mengimport django yaitu HttpResponse dan Serializers ke dalam file views.py. Kemudian, membuat fungsi yang menerima parameter request dengan nama show_xml dan show_json dan membuat sebuah variabel di dalam fungsi tersebut yang menyimpan hasil query dari seluruh data yang ada pada class Item yang ada pada model. Lalu, menambahkan return function berupa HttpResponse yang berisi parameter data hasil query yang sudah diserialisasi menjadi XML atau JSON dan parameter 'content_type="application/xml"' atau content_type="application/JSON"'. Lalu mengimport fungsi yang sudah dibuat ke dalam urls.py dan menambahkan path url ke dalam urlpatterns untuk mengakses fungsi yang sudah diimport tadi.
         
         -   fungsi untuk XML dan JSON by id
+
             Pertama, membuka views.py yang ada pada folder main dan membuat sebuah fungsi baru yang menerima parameter request dan id dengan nama show_xml_by_id dan show_json_by_id. Lalu, membuat sebuah variabel di dalam fungsi tersebut yang menyimpan hasil query dari data dengan id tertentu yang ada pada class Item pada model. Kemudian, membuat return function berupa HttpResponse yang berisi parameter data hasil query yang sudah diserialisasi menjadi JSON atau XML dan parameter content_type dengan value "application/xml" (untuk format XML) atau "application/json" (untuk format JSON).
             <pre>
             '''python
@@ -232,6 +236,98 @@ Perbedaan Utama --> MVC adalah pola arsitektur yang digunakan terutama dalam pen
         [![Screenshot-42.png](https://i.postimg.cc/7ZFVGhLf/Screenshot-42.png)](https://postimg.cc/4Y1tjJVg)
     -   screenshot JSON-by_id
         [![Screenshot-43.png](https://i.postimg.cc/yNnDqp2s/Screenshot-43.png)](https://postimg.cc/LqY9LDHb)
+
+
+
+
+### **TUGAS 4**
+
+1.  **Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?**
+
+    UserCreationForm adalah salah satu formulir bawaan yang disediakan oleh Django untuk mengelola proses pendaftaran pengguna dalam aplikasi web. Formulir ini digunakan untuk membuat dan mendaftarkan pengguna baru. Ini termasuk dalam modul django.contrib.auth.forms dan biasanya digunakan bersama dengan modul autentikasi Django.
+
+    -   **Kelebihan**
+        1.  Mudah Digunakan: UserCreationForm adalah formulir yang sudah terdefinisi dengan baik dan mudah digunakan. 
+        2.  Integrasi yang Baik dengan Model Pengguna: Formulir ini terintegrasi dengan model pengguna bawaan Django (User), yang membuatnya lebih mudah untuk menyimpan informasi pengguna dalam database.
+        3.  Validasi Bawaan: Formulir ini mencakup validasi bawaan yang memastikan bahwa pengguna memasukkan informasi yang benar dan sesuai, seperti memeriksa apakah nama pengguna sudah digunakan sebelumnya atau memastikan bahwa kata sandi sesuai dengan aturan keamanan.
+        4.  Fleksibilitas: Anda dapat memodifikasi formulir ini atau menambahkan bidang tambahan sesuai dengan kebutuhan Anda. Ini memungkinkan Anda untuk mengkustomisasi proses pendaftaran sesuai dengan aplikasi Anda.
+    -   **Kekurangan**
+        1.  Tampilan Standar: Formulir ini memiliki tampilan standar yang mungkin tidak cocok dengan desain UI khusus aplikasi yang kita buat. Kita perlu menyesuaikan tampilannya agar sesuai dengan gaya aplikasi kita.
+        2.  Bahasa Tertentu: Secara bawaan, formulir ini akan menggunakan bahasa yang terkait dengan konfigurasi Django kita. Jika kita ingin tampilan dan pesan kesalahan dalam bahasa lain, kita perlu melakukan pekerjaan tambahan.
+        3.  Keamanan: Meskipun formulir ini menyertakan validasi keamanan bawaan, keamanan sepenuhnya aplikasi juga bergantung pada konfigurasi lainnya, seperti penggunaan HTTPS dan praktik keamanan yang tepat di seluruh aplikasi.
+
+2.  **Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?**
+    1.  **Autentikasi**
+        -   **Deskripsi:** Autentikasi adalah proses verifikasi identitas pengguna. Ini mengonfirmasi apakah pengguna yang mencoba mengakses aplikasi adalah mereka yang mereka klaim. Dalam konteks Django, ini sering melibatkan verifikasi bahwa nama pengguna dan kata sandi yang dimasukkan oleh pengguna cocok dengan informasi yang tersimpan di dalam sistem (misalnya, dalam model User bawaan Django).
+        -   **Tujuan:** Autentikasi digunakan untuk memastikan bahwa pengguna yang mencoba mengakses aplikasi adalah pengguna yang sah dan memiliki izin untuk mengaksesnya. Ini adalah langkah pertama dalam mengelola akses ke aplikasi.
+    2.  **Otorisasi**
+        -   **Deskripsi:** Otorisasi adalah proses menentukan apa yang diizinkan atau tidak diizinkan oleh pengguna yang sudah diautentikasi. Ini melibatkan pengecekan hak akses pengguna terhadap berbagai sumber daya atau fitur dalam aplikasi, seperti halaman web, data, atau fungsi tertentu.
+        -   **Tujuan:** Otorisasi digunakan untuk mengontrol apa yang dapat dilakukan oleh pengguna yang sudah diautentikasi. Ini memastikan bahwa pengguna hanya memiliki akses ke bagian-bagian aplikasi yang sesuai dengan peran atau izin mereka, dan mencegah pengguna yang tidak sah mengakses sumber daya atau fitur yang tidak seharusnya mereka akses.
+    
+    Keduanya penting dalam pengembangan aplikasi web karena mereka bekerja sama untuk menjaga keamanan dan privasi aplikasi. Autentikasi memastikan bahwa pengguna yang masuk adalah mereka yang sah, sementara otorisasi memastikan bahwa mereka hanya memiliki akses ke bagian aplikasi yang sesuai dengan peran atau izin mereka.
+
+3.  **Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?**
+
+    Cookies adalah sepotong data kecil yang disimpan di sisi klien (browser) saat pengguna mengunjungi sebuah situs web. Cookies digunakan dalam konteks aplikasi web untuk menyimpan informasi di sisi klien yang dapat digunakan oleh server web untuk mengenali pengguna yang kembali ke situs tersebut. 
+
+    Django memiliki dukungan bawaan untuk mengelola cookies dan sesi pengguna melalui modul django.contrib.sessions. Berikut adalah cara Django menggunakan cookies untuk mengelola data sesi pengguna:
+
+    1.  Memulai Sesi Pengguna
+
+        Ketika seorang pengguna pertama kali mengunjungi situs web Django, sesi pengguna baru akan dimulai secara otomatis. Sebuah cookie khusus dengan ID sesi akan dibuat dan dikirimkan ke peramban pengguna.
+        
+    2.  Menyimpan Data Sesi
+
+        Saat pengguna melakukan interaksi dengan situs web (misalnya, masuk, menambahkan barang ke keranjang belanja, atau mengisi formulir), Django dapat digunakan untuk menyimpan data sesi pengguna dalam bentuk dictionary Python. Data ini akan dikaitkan dengan ID sesi yang sesuai.
+    
+    3.  Mengirimkan Cookie Kembali
+
+        Setiap kali pengguna membuat permintaan berikutnya ke situs web, web akan mengirimkan cookie sesi (berisi ID sesi) kembali ke server Django. Ini memungkinkan Django untuk mengidentifikasi sesi pengguna yang sesuai.
+    
+    4.  Mengambil Data Sesi
+
+        Django akan mengambil ID sesi dari cookie, mencocokkannya dengan sesi yang sesuai di server, dan mengembalikan data sesi pengguna ke dalam aplikasi.
+    
+    5.  Mengambil Data Sesi
+
+        Dapat menghapus atau mengubah data sesi pengguna sesuai kebutuhan. Setelah pengguna keluar atau sesi berakhir, data sesi dapat dihapus.
+
+4.  **Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?**
+
+    Penggunaan cookies dalam pengembangan web memiliki risiko potensial yang harus diwaspadai. Cookies memiliki beberapa risiko keamanan yang perlu dipertimbangkan di antaranya adalah pelacakan pengguna, kebocoran data, Cookie Theft, dan Penggunaan untuk Serangan Cross-Site Scripting (XSS).
+
+5.  **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+    1.  **Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.**
+
+        Untuk membuat fungsi registrasi, pertama saya  mengimport UserCreationForm dari django.contrib.auth.forms ke file views.py yang berfungsi untuk impor formulir bawaan yang memudahkan pembuatan formulir pendaftaran pengguna dalam aplikasi web. Selanjutnya saya membuat fungsi untuk registrasi yang menerima parameter request pada file views.py yang ada pada subdirektori main. Kemudian, saya membuat file register.html dan mengisinya dengan template tampilan form registrasi yang saya inginkan. Lalu, mengimport fungsi yang sudah dibuat dan menambahkan path url ke urlpatterns untuk dapat mengakses fungsi yang sudah diimpor tadi.
+
+        Untuk membuat fungsi login, saya mengimport function authenticate, login dari django.contrib.auth yang digunakan untuk melakukan autentikasi dan login jika autentikasi berhasil ke dalam file views.py. Kemudian, membuat fungsi login_user yang menerima parameter request. Fungsi ini berfungsi untuk mengautentikasi pengguna yang ingin login. Selanjutnya, saya membuat file login.html pada folder template sesuai dengan tampilan halaman login yang saya inginkan. Lalu, saya mengimport fungsi yang sudah dibuat ke urls.py dan menambahkan path ke urlpatterns.
+
+        Untuk membuat fungsi logout, saya mengimport function logout dari django.contrib.auth ke dalam views.py. Kemudian, membuat fungsi logout_user yang menerima parameter request. Lalu menambahkan tombol logout di halaman main.html. Kemudian mengimport fungsi lout_user ke dalam urls.py dan menambahkan path ke urlspatterns.
+    
+    2.  **Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.**
+
+        -   akun pertama
+            [![Screenshot-45.png](https://i.postimg.cc/d3HBCcwX/Screenshot-45.png)](https://postimg.cc/y3Rcq5JX)
+        -   akun Kedua
+            [![Screenshot-46.png](https://i.postimg.cc/WpHg0n0Q/Screenshot-46.png)](https://postimg.cc/Bt2j02Yg)
+        
+    3.  **Menghubungkan model Item dengan User.**
+
+        Pertama, membuka models.py dan menambahkan kode from django.contrib.auth.models import User. Lalu, pada class model Item yang sudah dibuat, tambahkan user = models.ForeignKey(User, on_delete=models.CASCADE) yang berfungsi untuk menghubungkan satu produk dengan satu user melalui sebuah relationship, dimana sebuah produk pasti terasosiasikan dengan seorang user. Kemudian, memodifikasi fungsi create_product pada views.py untuk mencegah Django agar tidak langsung menyimpan objek yang telah dibuat dari form langsung ke database. Hal tersebut memungkinkan kita untuk memodifikasi terlebih dahulu objek tersebut sebelum disimpan ke database. Selanjutnya, memodifikasi fungsi show_main dengan menambahkan products = Item.objects.filter(user=request.user) berfungsi untuk menampilkan objek Item yang terasosiasikan dengan pengguna yang sedang login. Hal tersebut dilakukan dengan menyaring seluruh objek dengan hanya mengambil Item yang dimana field user terisi dengan objek User yang sama dengan pengguna yang sedang login. Kemudian, melakukan migrasi model. 
+    
+    4.  **Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.**
+        
+        Untuk menampikan username, saya mengganti value dari 'name' pada context dalam fungsi show_main menjadi Kode request.user.username berfungsi untuk menampilkan username pengguna yang login pada halaman main. Dan untuk menerapkan cookies, pertama saya mengimport datetime, HttpResponseRedirect, dan  reverse pada file views.py. Kemudian, memodifikasi fungsi login_user dengan menambahkan fungsi untuk menambahkan cookie yang bernama last_login untuk melihat kapan terakhir kali pengguna melakukan login. Lalu, menambahkan kode 'last_login': request.COOKIES['last_login'], pada context pada show_main yang berfungsi menambahkan informasi cookie last_login pada response yang akan ditampilkan di halaman web. Kemudian memodifikasi fungsi logout_user untuk menghapus cookie last_login saat pengguna melakukan logout. Selanjutnya menambahkan informasi sesi terakhir login pada template halaman main.
+
+
+
+
+
+
+
+
+
 
 
  
