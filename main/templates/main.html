@@ -23,8 +23,9 @@ table, th, td {
 <table>
     <tr>
         <th>Name</th>
-        <th>amount</th>
+        <th>Amount</th>
         <th>Description</th>
+        <th>Option</th>
     </tr>
 
     {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
@@ -34,7 +35,25 @@ table, th, td {
             <td><center>{{item.name}}</center></td>
             <td><center>{{item.amount}}</center></td>
             <td>{{item.description}}</td>
+            <td>
+                <div style="display: flex; justify-content: space-between;">
+                <form method="post" action="{% url 'main:add_to_inventory' item.id %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Plus (+1)">
+                </form>
+            
+                <form method="post" action="{% url 'main:remove_from_inventory' item.id %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Min (-1)">
+                </form>
+                <form method="post" action="{% url 'main:delete_item' item.id %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Delete">
+                </form>
+                </div>
+            </td>
         </tr>
+        
     {% endfor %}
 </table>
 

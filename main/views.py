@@ -11,6 +11,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 import datetime
 
 # Create your views here.
@@ -23,7 +24,7 @@ def show_main(request):
         'name': request.user.username,
         'class': 'PBP E',
         'products': products,
-        'last_login': request.COOKIES['last_login'],
+        'last_login': request.COOKIES['last_login']
     }
 
     return render(request, "main.html", context)
@@ -89,3 +90,22 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+def add_to_inventory(request, item_id):
+    item = get_object_or_404(Item, pk=item_id)
+    item.amount += 1
+    item.save()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+def remove_from_inventory(request, item_id):
+    item = get_object_or_404(Item, pk=item_id)
+    if item.amount > 0:
+        item.amount -= 1
+        item.save()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+def delete_item(request, item_id):
+    item = get_object_or_404(Item, pk=item_id)
+    item.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
