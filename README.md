@@ -332,7 +332,7 @@ Perbedaan Utama --> MVC adalah pola arsitektur yang digunakan terutama dalam pen
         -   Manfaat: Universal selector memilih semua elemen pada halaman web.
         -   Kapan digunakan: Sebaiknya digunakan dengan hati-hati karena dapat mempengaruhi semua elemen. Dapat berguna dalam situasi khusus    seperti mereset gaya default browser.
     2.  **Type Selector (Element Selector):**
-        -   Manfaat: Memilih semua elemen dengan tipe tertentu (misalnya, <p> untuk paragraf atau <h1> untuk judul level 1).
+        -   Manfaat: Memilih semua elemen dengan tipe tertentu.
         -   Kapan digunakan: Cocok untuk merubah gaya elemen spesifik dengan tipe tertentu.
     3.  **Class Selector (.classname):**
         -   Manfaat: Memilih semua elemen yang memiliki atribut class dengan nilai tertentu.
