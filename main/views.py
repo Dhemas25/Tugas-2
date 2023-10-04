@@ -11,7 +11,6 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404
 import datetime
 
 # Create your views here.
@@ -38,7 +37,11 @@ def create_product(request):
         product.save()
         return HttpResponseRedirect(reverse('main:show_main'))
 
-    context = {'form': form}
+    context = {
+        'name': request.user.username,
+        'class': 'PBP E',
+        'form': form
+    }
     return render(request, "create_product.html", context)
 
 def show_xml(request):
@@ -91,21 +94,45 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
-def add_to_inventory(request, item_id):
-    item = get_object_or_404(Item, pk=item_id)
+def add1_to_inventory(request, id):
+    # Get product berdasarkan ID
+    item= Item.objects.get(pk = id)
     item.amount += 1
     item.save()
     return HttpResponseRedirect(reverse('main:show_main'))
 
-def remove_from_inventory(request, item_id):
-    item = get_object_or_404(Item, pk=item_id)
+def remove1_from_inventory(request, id):
+    # Get product berdasarkan ID
+    item = Item.objects.get(pk = id)
     if item.amount > 0:
         item.amount -= 1
         item.save()
     return HttpResponseRedirect(reverse('main:show_main'))
 
-def delete_item(request, item_id):
-    item = get_object_or_404(Item, pk=item_id)
+def delete_item(request, id):
+    # Get data berdasarkan ID
+    item = Item.objects.get(pk = id)
+    # Hapus data
     item.delete()
+    # Kembali ke halaman awal
     return HttpResponseRedirect(reverse('main:show_main'))
+
+def edit_product(request, id):
+    # Get product berdasarkan ID
+    item = Item.objects.get(pk = id)
+
+    # Set product sebagai instance dari form
+    form = ProductForm(request.POST or None, instance=item)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {
+        'name': request.user.username,
+        'class': 'PBP E',
+        'form': form
+    }
+    return render(request, "edit_product.html", context)
 

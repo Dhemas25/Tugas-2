@@ -1,3 +1,9 @@
+<style>
+    .button-register {
+    background: linear-gradient(to right, rgb(234, 76, 3), rgb(95, 89, 87))
+    }
+</style>
+
 {% extends 'base.html' %}
 
 {% block meta %}
@@ -5,30 +11,56 @@
 {% endblock meta %}
 
 {% block content %}  
+<section>
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-<div class = "login">
+                <form method="POST" >  
+                    {% csrf_token %}  
+                    <table>  
+                        {{ form.as_table }}  
+                        <tr>  
+                            <td></td>
+                            <td>
+                                <div >
+                                    <input type="submit" name="submit" value="Register"
+                                    class="btn btn-success btn-block btn-lg button-register text-body"/>
+                                  </div>
+                            </td>
+                        </tr>  
+                    </table>  
+                </form>
     
-    <h1>Register</h1>  
+                {% if messages %}  
+                    <ul>   
+                        {% for message in messages %}  
+                            <li>{{ message }}</li>  
+                            {% endfor %}  
+                    </ul>   
+                {% endif %}
 
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
-        </form>
 
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
+                <p class="text-center text-muted mt-5 mb-0">Already Have an Account <a href="{% url 'main:login' %}"
+                    class="fw-bold text-body"><u>Login here</u></a></p>
 
-</div>  
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="bg-dark text-light text-center py-3" style="position: relative; bottom: 0; width: 100%;">
+  <div class="container">
+      <p>Dhemas's Music Inventory</p>
+  </div>
+</footer>
+
 
 {% endblock content %}

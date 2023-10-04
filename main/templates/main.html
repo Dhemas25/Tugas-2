@@ -1,76 +1,77 @@
-<!-- Table from https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_th -->
 <style>
- table, th, td {
-        border-collapse: collapse;
-    }
+    .btn btn-warning{
 
-table, th, td {
-  border: 2px solid black;
-}
+    }
 </style>
+
 
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Cloud's Inventory</h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" style="font-size: x-large; font-weight: bold; -webkit-text-fill-color: #ffffff;" href="{% url 'main:show_main' %}">Dhemas Music Inventory</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav ms-auto">
+                <li class="navbar-nav ms-auto">
+                    <span class="navbar-text" style="font-size: large;">Welcome, {{ name }}</span>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Menu
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'main:show_main' %}">Home</li>
+                        <li><a class="dropdown-item" href="{% url 'main:create_product' %}">Add a new product</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'main:logout' %}">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-    <h5>Name:</h5>
-    <p>{{name}}</p>
+<div class="container mt-4">
+    <h1 class="mb-4 text-light">Music Inventory</h1>
 
-    <h5>Class:</h5>
-    <p>{{class}}</p>
-
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Amount</th>
-        <th>Description</th>
-        <th>Option</th>
-    </tr>
-
-    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-
-    {% for item in products %}
-        <tr>
-            <td><center>{{item.name}}</center></td>
-            <td><center>{{item.amount}}</center></td>
-            <td>{{item.description}}</td>
-            <td>
-                <div style="display: flex; justify-content: space-between;">
-                <form method="post" action="{% url 'main:add_to_inventory' item.id %}">
-                    {% csrf_token %}
-                    <input type="submit" value="Plus (+1)">
-                </form>
-            
-                <form method="post" action="{% url 'main:remove_from_inventory' item.id %}">
-                    {% csrf_token %}
-                    <input type="submit" value="Min (-1)">
-                </form>
-                <form method="post" action="{% url 'main:delete_item' item.id %}">
-                    {% csrf_token %}
-                    <input type="submit" value="Delete">
-                </form>
+    <div class="row mt-4">
+        {% for item in products %}
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">Amount: {{ item.amount }}</p>
+                        <p class="card-text">{{ item.description }}</p>
+                        <a href="{% url 'main:add1_to_inventory' item.pk %}" class="btn btn-warning">Plus (+1)</a>
+                        <a href="{% url 'main:remove1_from_inventory' item.pk %}" class="btn btn-success">Minus (-1)</a>
+                        <a href="{% url 'main:delete_item' item.pk %}" class="btn btn-danger">Delete</a>
+                        <a href="{% url 'main:edit_product' item.pk %}" class="btn btn-primary">Edit</a>
+                    </div>
                 </div>
-            </td>
-        </tr>
-        
-    {% endfor %}
-</table>
+            </div>
+        {% endfor %}
+    </div>
 
-<br />
-
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-
-<a href="{% url 'main:create_product' %}">
-    <button>
-        Add New Product
-    </button>
-</a>
-
-<a href="{% url 'main:logout' %}">
-    <button>
-        Logout
-    </button>
-</a>
+    <h5 class="mt-4 text-light">Sesi terakhir login: {{ last_login }}</h5>
+</div>
+</div>
+<footer class="bg-dark text-light py-3" style="position:fixed; bottom: 0; width: 100%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+            <table>
+                <tr>
+                    <p>Name:{{ name }}</p>
+                    <p>Class:{{ class }}</p>
+                </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+</footer>
 
 {% endblock content %}

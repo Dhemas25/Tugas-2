@@ -322,7 +322,84 @@ Perbedaan Utama --> MVC adalah pola arsitektur yang digunakan terutama dalam pen
 
 
 
+### **TUGAS 5**
 
+1.  **Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.**
+
+    Element selector dalam CSS digunakan untuk memilih elemen HTML tertentu berdasarkan jenis atau nama elemennya. Setiap elemen HTML memiliki elemen selector yang berbeda, dan penggunaannya bergantung pada kebutuhan desain dan struktur halaman web. Berikut adalah beberapa elemen selector yang umum digunakan beserta manfaat dan waktu yang tepat untuk menggunakannya:
+
+    1.  **Universal Selector (*):**
+        -   Manfaat: Universal selector memilih semua elemen pada halaman web.
+        -   Kapan digunakan: Sebaiknya digunakan dengan hati-hati karena dapat mempengaruhi semua elemen. Dapat berguna dalam situasi khusus    seperti mereset gaya default browser.
+    2.  **Type Selector (Element Selector):**
+        -   Manfaat: Memilih semua elemen dengan tipe tertentu (misalnya, <p> untuk paragraf atau <h1> untuk judul level 1).
+        -   Kapan digunakan: Cocok untuk merubah gaya elemen spesifik dengan tipe tertentu.
+    3.  **Class Selector (.classname):**
+        -   Manfaat: Memilih semua elemen yang memiliki atribut class dengan nilai tertentu.
+        -   Kapan digunakan: Berguna saat ingin mengaplikasikan gaya yang sama pada beberapa elemen dengan class yang sama.
+    4.  **ID Selector (#idname):**
+        -   Manfaat: Memilih elemen dengan atribut id tertentu.
+        -   Kapan digunakan: Dapat digunakan ketika hanya ada satu elemen dengan ID tertentu pada halaman, dan digunakan untuk mengaplikasikan gaya atau perilaku yang unik pada elemen tersebut.
+    5.  **Attribute Selector ([attribute=value]):**
+        -   Manfaat: Memilih elemen berdasarkan atribut dan nilai atribut yang spesifik.
+        -   Kapan digunakan: Berguna saat ingin mengaplikasikan gaya pada elemen dengan atribut tertentu (misalnya, [type="text"] untuk memilih input teks).
+    6.  **Pseudo-Class Selector (:pseudo-class):**
+        -   Manfaat: Memilih elemen dalam keadaan tertentu, seperti :hover untuk elemen saat kursor diarahkan padanya.
+        -   Kapan digunakan: Digunakan untuk mengubah perilaku elemen dalam keadaan tertentu, seperti saat interaksi pengguna.
+    7.  **Pseudo-Element Selector (::pseudo-element):**
+        -   Manfaat: Memungkinkan untuk memilih dan mengubah bagian tertentu dari elemen, seperti ::before untuk menambahkan konten sebelum elemen.
+        -   Kapan digunakan: Digunakan untuk menambahkan elemen tambahan atau mengubah tampilan elemen tertentu.
+    8.  **Descendant Selector (ancestor descendant):**
+        -   Manfaat: Memilih elemen yang merupakan turunan (child) dari elemen lain.
+        -   Kapan digunakan: Berguna saat ingin mengaplikasikan gaya pada elemen-elemen yang berada dalam elemen lain, misalnya, styling untuk elemen-elemen dalam tabel.
+    9.  **Child Selector (parent > child):**
+        -   Manfaat: Memilih elemen anak yang langsung di dalam elemen induk tertentu.
+        -   Kapan digunakan: Digunakan ketika ingin mengaplikasikan gaya atau perilaku pada elemen-elemen anak yang langsung berada di dalam elemen induk tertentu.
+    10. **Adjacent Sibling Selector (prev + next):**
+        -   Manfaat: Memilih elemen yang berada sejajar dengan elemen lain dan memiliki elemen induk yang sama.
+        -   Kapan digunakan: Berguna saat ingin mengaplikasikan gaya atau perilaku pada elemen yang berada sejajar dengan elemen lain dalam dokumen.
+
+2.  **Jelaskan HTML5 Tag yang kamu ketahui.**
+
+    1.  '<header>': Tag ini digunakan untuk mendefinisikan bagian atas (header) dari sebuah halaman web atau bagian dari konten yang mewakili kepala dari sebuah bagian atau artikel.
+    2.  '<nav>': Tag ini digunakan untuk mengelompokkan tautan navigasi dalam sebuah elemen, seperti menu navigasi utama atau menu samping.
+    3.  '<main>': Tag ini digunakan untuk mengandung konten utama dari halaman web. Biasanya, hanya ada satu elemen <main> dalam satu halaman.
+    4.  '<section>': Tag ini digunakan untuk mengelompokkan konten terkait dalam sebuah bagian, seperti artikel dalam sebuah berita.
+    5.  '<footer>': Tag ini digunakan untuk mendefinisikan bagian bawah (footer) dari sebuah halaman web atau bagian dari konten yang mewakili penutup dari sebuah bagian atau artikel.
+    6.  '<input>' (dengan berbagai jenis, seperti text, password, email, checkbox, dll.): Tag ini digunakan untuk membuat berbagai jenis elemen input dalam formulir.
+
+3.  **Jelaskan perbedaan antara margin dan padding.**
+
+    Margin dan padding adalah dua properti penting dalam CSS yang digunakan untuk mengatur tata letak elemen dalam halaman web. Mereka memiliki perbedaan utama dalam cara mereka memengaruhi ruang di sekitar dan di dalam elemen HTML. Berikut adalah perbedaan antara margin dan padding:
+
+    1.  Margin
+        -   Fungsi: Margin adalah jarak antara elemen dan elemen-elemen lain di sekitarnya. Margin menciptakan ruang kosong di luar elemen.
+        -   Aplikasi: Margin digunakan untuk mengontrol jarak antara elemen dengan elemen lain yang berdekatan atau dengan tepi elemen induknya.
+        -   Pengaruh: Margin mempengaruhi tata letak elemen dengan cara mempengaruhi jarak antara elemen tersebut dan elemen-elemen tetangganya.
+    2.  Padding
+        -   Fungsi: Padding adalah jarak antara batas elemen dan kontennya. Padding menciptakan ruang kosong di dalam elemen.
+        -   Aplikasi: Padding digunakan untuk mengatur jarak antara konten elemen dan batasnya. Ini mempengaruhi tampilan konten dalam elemen tersebut.
+        -   Pengaruh: Padding mempengaruhi tampilan elemen dengan cara mempengaruhi jarak antara konten elemen dan batas elemen.
+
+4.  **Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?**
+
+    *   Tailwind CSS:
+        -   Pendekatan "utility-first."
+        -   Konfigurasi fleksibel.
+        -   Memerlukan pemahaman HTML dan CSS yang baik.
+
+    *   Bootstrap:
+        -   Komponen UI siap pakai.
+        -   Cocok untuk pemula.
+        -   Tema bawaan tersedia.
+
+    *   Kapan Menggunakan:
+        -   Bootstrap: Cepat, pemula, tema bawaan.
+        -   Tailwind CSS: Kontrol desain, pemahaman CSS, fleksibel.
+
+5.  **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+    
+    Untuk kustomisasi Login Page, saya menggunakan template dari https://mdbootstrap.com/docs/standard/extended/login/ dan memodifikasinya dengan mengubah warna dan gambar, dan menyesuaikan dengan form login yang dibuat pada tugas sebelumnya. Selanjutnya, saya menambahkan footer untuk semua page. Saya juga menambahkan navbar untuk main page, create product, dan edit product yang berisi nama aplikasi, teks welcome untuk user dan sebuah dropdown yang memiliki menu 'home' untuk kembali ke main page, 'add a new product' untuk menambahkan produk dan 'logout' untuk logout. User juga dapat kembali ke main page saat mengklik nama aplikasi di navbar. Terakhir, saya memodifikasi main page untuk menampilkan list produknya menggunakan pendekatan dengan card.
 
 
 
