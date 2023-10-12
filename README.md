@@ -403,6 +403,60 @@ Perbedaan Utama --> MVC adalah pola arsitektur yang digunakan terutama dalam pen
 
 
 
+### **TUGAS 6**
+
+1.  **Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.**
+
+    Perbedaan utama antara keduanya terletak pada bagaimana tugas-tugas tersebut diatur dan dijalankan:
+
+    *   Synchronous Programming (Program Sinkron):
+
+        -   Dalam synchronous programming, tugas atau operasi dijalankan secara berurutan, satu per satu. Artinya, program akan menunggu hingga    tugas yang sedang berjalan selesai sebelum menjalankan tugas selanjutnya.
+        -   Jika ada tugas yang membutuhkan waktu lama untuk menyelesaikan, maka program akan menjadi tidak responsif selama tugas tersebut berjalan. Hal ini dapat mengakibatkan program tampak "terblokir" atau "menggantung" jika ada tugas yang memakan waktu.
+
+    *   Asynchronous Programming (Program Asinkron):
+
+        -   Dalam asynchronous programming, tugas atau operasi dijalankan secara independen. Artinya, program tidak harus menunggu tugas yang sedang berjalan selesai sebelum menjalankan tugas berikutnya.
+        -   Tugas-tugas yang memakan waktu lama atau yang melibatkan I/O (Input/Output), seperti membaca data dari disk atau jaringan, dapat dijalankan secara asinkron, sehingga program tetap responsif. Program dapat melanjutkan menjalankan tugas lainnya sambil menunggu hasil dari tugas asinkron.
+
+2.  **Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.**
+
+    Paradigma pemrograman berbasis peristiwa adalah pendekatan pemrograman di mana aliran program ditentukan oleh peristiwa, seperti tindakan pengguna atau data yang datang dari sumber eksternal. Dalam paradigma ini, program merespons peristiwa-peristiwa ini saat terjadi, daripada mengikuti urutan eksekusi yang telah ditentukan sebelumnya.
+
+    Sebagai contoh, dalam tugas ini, jika pengguna menambahkan produk dengan AJAX, paradigma pemrograman yang digerakkan oleh peristiwa melibatkan operasi asinkron, di mana tugas-tugas diinisiasi tetapi tidak memblokir eksekusi program utama. Hal ini memungkinkan program untuk melakukan beberapa tugas secara bersamaan tanpa menunggu satu tugas selesai sebelum memulai tugas yang lain.
+
+3.  **Jelaskan penerapan asynchronous programming pada AJAX.**
+
+    Asynchronous JavaScript and XML (AJAX) adalah teknik yang digunakan dalam pengembangan aplikasi web untuk mengambil atau mengirim data dari dan ke server tanpa harus memuat ulang seluruh halaman. Asynchronous programming adalah bagian kunci dari AJAX, karena memungkinkan permintaan data atau tindakan ke server untuk berjalan secara asinkron, tanpa menghalangi atau memblokir antarmuka pengguna (UI). Penerapan asynchronous programming pada AJAX memungkinkan kita untuk membuat aplikasi web yang responsif, karena dapat mengambil dan memproses data dari server tanpa mengganggu pengalaman pengguna.
+
+4.  **Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.**
+
+    *   Fetch API:
+
+        -   Modern dan Native: Fetch API adalah bagian dari standar JavaScript modern, yang berarti tidak perlu mengunduh atau memasang pustaka eksternal. Ini menjadi bagian dari inti bahasa dan berfungsi di hampir semua browser terbaru.
+        -   Promises: Fetch API menggunakan Promises, yang membuat pengkodean asinkron menjadi lebih bersih dan mudah dibaca, terutama ketika digabungkan dengan async/await.
+        -   Lebih Ringan: Lebih ringan dari jQuery karena fokus hanya pada fitur AJAX dan tidak memiliki sejumlah besar fungsi tambahan seperti jQuery.
+        -   Modular: dapat menggabungkan Fetch API dengan berbagai modul atau kerangka kerja lain sesuai kebutuhan Anda.
+
+    *   jQuery:
+
+        -   Cross-Browser Compatibility: Salah satu keunggulan utama jQuery adalah kemampuannya untuk menangani perbedaan dalam dukungan AJAX di berbagai browser, sehingga tidak perlu khawatir tentang perbedaan kompatibilitas.
+        -   Sintaksis yang Mudah: jQuery memiliki sintaksis yang lebih sederhana dan singkat dibandingkan dengan Fetch API, yang dapat mempercepat pengembangan.
+        -   Plugin Ecosystem: jQuery memiliki ekosistem plugin yang luas, yang dapat memperluas fungsionalitasnya untuk tugas-tugas tertentu seperti animasi, manipulasi DOM, dan banyak lagi.
+    
+    Jika bekerja dalam konteks pengembangan web modern yang menargetkan browser terbaru dan memiliki kontrol penuh atas lingkungan Anda, Fetch API adalah pilihan yang baik. Ini adalah pendekatan yang lebih modern, memiliki kinerja yang baik, dan memungkinkan Anda untuk mengimplementasikan tugas asinkron dengan cara yang lebih bersih menggunakan Promises dan async/await.
+
+    Namun, jika perlu mendukung browser lama atau menginginkan kemudahan dalam mengelola kompatibilitas lintas-browser tanpa banyak pengaturan, jQuery masih merupakan pilihan yang layak. Selain itu, jika sudah memiliki pengalaman dengan jQuery dalam proyek-proyek sebelumnya, itu bisa mempermudah pengembangan aplikasi.
+
+5.  **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+
+    Untuk mengimplementasikan AJAX dalam kode saya, pertama-tama saya perlu membuat fungsi baru di 'views.py' yang disebut 'get_product_json' untuk mengambil data sebagai JSON dan 'add_product_ajax' untuk menambahkan produk baru ke dalam basis data dengan menggunakan AJAX. Saya juga mengimpor dekorator 'csrf_exempt' dan meletakkannya di atas fungsi 'add_product_ajax'. Kemudian, saya mengimpor fungsi yang baru saja saya buat dan menambahkan jalur URL di dalam daftar urlpatterns di 'urls.py' di dalam folder utama. Kemudian, di dalam 'main.html', saya menambahkan tag '< script >' dan menambahkan fungsi 'getProducts' untuk mendapatkan data JSON secara asinkron, 'refreshProducts' untuk menyegarkan data produk secara asinkron, dan 'addProduct' untuk menambahkan produk baru menggunakan data formulir menggunakan AJAX. Saya juga mengatur fungsi 'addProduct' untuk sekali klik. Kemudian saya menambahkan struktur tabel baru dan modal form menggunakan Bootstrap.
+
+    *Saya menggunakan internet untuk mendapatkan referensi dan chatgpt untuk membantu saya dengan kesalahan sintaks dan kesalahan server*
+
+
+
+
 
 
 
